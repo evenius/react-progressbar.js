@@ -26,7 +26,7 @@ var Shape = React.createClass({
         var style = this.props.containerStyle;
         var className = this.props.containerClassName;
 
-        return <div className={className} style={style} ref="progressBar"></div>;
+        return <div className={className} style={style} ref={p => this.progressBar = p}></div>;
     },
 
     componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
@@ -55,7 +55,7 @@ var Shape = React.createClass({
 
         // setState function is not used to prevent a new render cycle
         // This handling happens outside of React component's lifecycle
-        var container = ReactDom.findDOMNode(this.refs.progressBar);
+        var container = ReactDom.findDOMNode(this.progressBar);
         this.state.shape = new props.ShapeClass(
             container,
             props.options
